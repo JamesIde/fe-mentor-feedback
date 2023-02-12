@@ -11,7 +11,7 @@ provider:
     SUPABASE_URL: ${env:SUPABASE_URL}
 functions:
   hello:
-    handler: lambdas/hello.hello
+    handler: feedback/getFeedback
     events:
       - httpApi:
           path: /
