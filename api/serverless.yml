@@ -18,6 +18,12 @@ functions:
       - httpApi:
           path: /
           method: get
+  addFeedback:
+    handler: lambdas/feedback.addFeedback
+    events:
+      - httpApi:
+          path: /
+          method: post
 
 plugins:
   - serverless-plugin-typescript

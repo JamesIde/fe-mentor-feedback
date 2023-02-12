@@ -1,10 +1,10 @@
 import Main from "./components/Main";
-
+import Layout from "./components/Layout";
 function App() {
   return (
-    <div className="xl:w-3/5 md:w-4/5 w-full mx-auto xl:mt-24 md:mt-12">
+    <Layout>
       <Main />
-    </div>
+    </Layout>
   );
 }
 

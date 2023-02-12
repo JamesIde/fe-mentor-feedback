@@ -1,4 +1,6 @@
 import { HiLightBulb } from "react-icons/hi";
+import { Link } from "react-router-dom";
+import Feedback from "./Feedback";
 function Main() {
   const tags = ["All", "UI", "UX", "Enhancement", "Bug", "Feature"];
   const roadMap = new Map([
@@ -60,7 +62,7 @@ function Main() {
             <nav>
               <div className="bg-[#312e81] h-20 rounded-2xl">
                 <div className="flex flex-row justify-between">
-                  <div className="flex flex-row pt-5">
+                  <div className="flex flex-row pt-5 mt-1">
                     <div>
                       <HiLightBulb
                         size={30}
@@ -79,13 +81,18 @@ function Main() {
                     </div>
                   </div>
                   <button className=" bg-purple-500 rounded-xl flex justify-center items-center m-4 hover:bg-purple-900">
-                    <div className="pl-4 pr-4 pt-3 pb-3">
-                      <p className="text-sm text-white">+ Add Feedback</p>
-                    </div>
+                    <Link to="/add-feedback">
+                      <div className="pl-4 pr-4 pt-3 pb-3">
+                        <p className="text-sm text-white">+ Add Feedback</p>
+                      </div>
+                    </Link>
                   </button>
                 </div>
               </div>
             </nav>
+            <div>
+              <Feedback />
+            </div>
           </div>
         </div>
       </main>
