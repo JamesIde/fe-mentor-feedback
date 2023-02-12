@@ -6,6 +6,7 @@ useDotenv: true
 provider:
   name: aws
   runtime: nodejs14.x
+  region: ap-southeast-2
   environment:
     SUPABASE_KEY: ${process.env.SUPABASE_KEY}
     SUPABASE_URL: ${process.env.SUPABASE_URL}
