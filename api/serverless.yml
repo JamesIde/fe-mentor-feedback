@@ -1,18 +1,19 @@
-service: serverless-http-api-typescript
+service: feedback-api
 frameworkVersion: "3"
 
 useDotenv: true
 
 provider:
   name: aws
-  runtime: nodejs14.x
+  stage: dev
   region: ap-southeast-2
+  runtime: nodejs14.x
   environment:
-    SUPABASE_KEY: ${process.env.SUPABASE_KEY}
-    SUPABASE_URL: ${process.env.SUPABASE_URL}
+    SUPABASE_KEY: ${env:SUPABASE_KEY}
+    SUPABASE_URL: ${env:SUPABASE_URL}
 functions:
-  hello:
-    handler: lambdas/feedback.feedback
+  getFeedback:
+    handler: lambdas/feedback.getFeedback
     events:
       - httpApi:
           path: /
