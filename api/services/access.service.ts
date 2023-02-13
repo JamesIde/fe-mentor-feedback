@@ -32,4 +32,19 @@ export class AccessService {
 
     return response(201, "Item created");
   }
+
+  public async deleteFeedback(event: APIGatewayProxyEvent) {
+    const id = event.pathParameters?.id;
+    if (!id) {
+      return response(400, "Please provide an id");
+    }
+
+    let feedback = await supabase.from("feedback").delete().match({ id: id });
+
+    if (feedback.error) {
+      return response(500, feedback.error.message);
+    }
+
+    return response(204);
+  }
 }

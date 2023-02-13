@@ -13,3 +13,10 @@ export const addFeedback = async (
   const accessService = new AccessService();
   return accessService.addFeedback(event);
 };
+
+export const deleteFeedback = async (
+  event: APIGatewayProxyEvent
+): Promise<APIGatewayProxyResult> => {
+  const accessService = new AccessService();
+  return accessService.deleteFeedback(event);
+};

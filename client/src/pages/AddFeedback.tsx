@@ -1,11 +1,13 @@
 import Layout from "../components/Layout";
 import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { CATEGORIES } from "../utils/constants";
 import { useMutation } from "react-query";
 import { addFeedback } from "../utils/fetch";
+import { toastNotify } from "../utils/notification";
 function AddFeedback() {
+  const navigate = useNavigate();
   const [selectedOption, setSelectedOption] = useState(CATEGORIES[0]);
   const [form, setForm] = useState({
     title: "",
@@ -27,7 +29,9 @@ function AddFeedback() {
   const { mutate, isLoading } = useMutation({
     mutationFn: addFeedback,
     onSuccess: (data) => {
-      console.log(data);
+      navigate("/");
+      data.status === 200 && console.log(data);
+      data.status === 400 && toastNotify("error", "err");
     },
     onError: (err) => {
       console.log(err);

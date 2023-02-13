@@ -1,6 +1,7 @@
 import { HiLightBulb } from "react-icons/hi";
 import { Link } from "react-router-dom";
 import Feedback from "./Feedback";
+import UserArea from "./UserArea";
 function Main() {
   const tags = ["All", "UI", "UX", "Enhancement", "Bug", "Feature"];
   const roadMap = new Map([
@@ -19,6 +20,7 @@ function Main() {
               </h1>
               <p className="text-white text-sm mt-2">Feedback Board</p>
             </div>
+            <UserArea />
             <div className="bg-white rounded-xl p-3">
               <div className="flex flex-row flex-wrap">
                 {tags.map((tag) => (
@@ -83,7 +85,9 @@ function Main() {
                   <button className=" bg-purple-500 rounded-xl flex justify-center items-center m-4 hover:bg-purple-900">
                     <Link to="/add-feedback">
                       <div className="pl-4 pr-4 pt-3 pb-3">
-                        <p className="text-sm text-white">+ Add Feedback</p>
+                        <p className="text-sm text-white font-bold">
+                          + Add Feedback
+                        </p>
                       </div>
                     </Link>
                   </button>

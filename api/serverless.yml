@@ -8,6 +8,9 @@ provider:
   stage: dev
   region: ap-southeast-2
   runtime: nodejs14.x
+  httpApi:
+    payload: "1.0"
+    cors: true
   environment:
     SUPABASE_KEY: ${env:SUPABASE_KEY}
     SUPABASE_URL: ${env:SUPABASE_URL}
@@ -18,12 +21,20 @@ functions:
       - httpApi:
           path: /
           method: get
+
   addFeedback:
     handler: lambdas/feedback.addFeedback
     events:
       - httpApi:
           path: /
           method: post
+
+  deleteFeedback:
+    handler: lambdas/feedback.deleteFeedback
+    events:
+      - httpApi:
+          path: /{id}
+          method: delete
 
 plugins:
   - serverless-plugin-typescript

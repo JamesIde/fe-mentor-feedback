@@ -6,7 +6,7 @@ const commonHeaders = {
 };
 const response = (
   statusCode: number,
-  body: string | any[] | null
+  body?: string | any[] | null
 ): APIGatewayProxyResult => {
   return {
     statusCode,

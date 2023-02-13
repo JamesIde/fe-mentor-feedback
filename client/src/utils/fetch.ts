@@ -14,3 +14,10 @@ export async function addFeedback(data: FeedbackData) {
   });
   return response;
 }
+
+export async function deleteFeedback(id: string) {
+  const response = await fetch(`${API_URL}${id}`, {
+    method: "DELETE",
+  });
+  return response;
+}

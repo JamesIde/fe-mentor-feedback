@@ -5,12 +5,10 @@ import FeedbackItem from "./FeedbackItem";
 import { getFeedback } from "../utils/fetch";
 function Feedback() {
   const { data, isLoading, isSuccess, error } = useQuery(
-    ["comments"],
+    ["feedback"],
     () => getFeedback(),
     {
-      onSuccess: (data) => {
-        // console.log(data);
-      },
+      onSuccess: (data) => {},
       onError: (error) => {
         console.log(error);
       },
