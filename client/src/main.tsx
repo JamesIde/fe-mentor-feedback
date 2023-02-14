@@ -7,6 +7,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AddFeedback from "./pages/AddFeedback";
 import { QueryClient, QueryClientProvider } from "react-query";
 import Register from "./pages/Register";
+import Login from "./pages/Login";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -19,6 +20,10 @@ export const router = createBrowserRouter([
   {
     path: "/register",
     element: <Register />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
   },
 ]);
 const queryClient = new QueryClient();

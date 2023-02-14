@@ -1,11 +1,13 @@
-import { CognitoUserAttribute } from "amazon-cognito-identity-js";
+import { CognitoUser, CognitoUserAttribute } from "amazon-cognito-identity-js";
 import { useState } from "react";
 import GoBack from "../components/GoBack";
 import Layout from "../components/Layout";
 import { COGNITO_USER_POOL } from "../services/cognito.service";
 import { toastNotify } from "../utils/notification";
+import { useNavigate } from "react-router-dom";
 function Register() {
-  const [form, formData] = useState({
+  const navigate = useNavigate();
+  const [form, setFormData] = useState({
     username: "",
     email: "",
     password: "",
@@ -16,7 +18,7 @@ function Register() {
   const [showVerification, setShowVerification] = useState(false);
 
   function handleChange(e: any) {
-    formData((prevState) => ({
+    setFormData((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
     }));
@@ -48,6 +50,26 @@ function Register() {
         }
       }
     );
+  }
+
+  function handleVerification(e: any) {
+    const userData = {
+      Username: form.username,
+      Pool: COGNITO_USER_POOL,
+    };
+    const user = new CognitoUser(userData);
+    user.confirmRegistration(form.verificationCode, true, (err, result) => {
+      if (err) {
+        toastNotify("error", "Something went wrong verifying your account.");
+      }
+      navigate("/");
+      setFormData({
+        email: "",
+        username: "",
+        password: "",
+        verificationCode: "",
+      });
+    });
   }
 
   // Verify code needed
@@ -132,7 +154,7 @@ function Register() {
           <section>
             {showVerification && (
               <>
-                <form>
+                <form onSubmit={handleVerification}>
                   <div className="mt-3 text-center">
                     <label
                       htmlFor="verificationCode"
