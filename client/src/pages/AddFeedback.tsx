@@ -6,6 +6,7 @@ import { CATEGORIES } from "../utils/constants";
 import { useMutation } from "react-query";
 import { addFeedback } from "../utils/fetch";
 import { toastNotify } from "../utils/notification";
+import GoBack from "../components/GoBack";
 function AddFeedback() {
   const navigate = useNavigate();
   const [selectedOption, setSelectedOption] = useState(CATEGORIES[0]);
@@ -46,18 +47,7 @@ function AddFeedback() {
   return (
     <Layout>
       <div className="xl:w-6/12 md:w-10/12 w-full mx-auto p-2">
-        <section>
-          <Link to="/">
-            <div className="flex flex-row">
-              <div className="mt-[1.5px] mr-4">
-                <MdOutlineKeyboardArrowLeft color="blue" />
-              </div>
-              <div>
-                <p className="text-sm font-bold text-blue-900">Go Back</p>
-              </div>
-            </div>
-          </Link>
-        </section>
+        <GoBack />
         <form>
           <section>
             <div className="p-8 bg-white mt-10 rounded-xl">
