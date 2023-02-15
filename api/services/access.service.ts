@@ -9,7 +9,8 @@ export class AccessService {
   constructor() {
     this.supabase = supabase;
   }
-  public async getFeedback() {
+  public async getFeedback(event: APIGatewayProxyEvent) {
+    console.log(`event: ${JSON.stringify(event)}`);
     let { data: feedback, error } = await supabase.from("feedback").select("*");
     if (error) {
       return response(500, error.message);

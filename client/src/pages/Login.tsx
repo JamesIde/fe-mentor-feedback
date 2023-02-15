@@ -31,7 +31,6 @@ function Login() {
     const user = new CognitoUser({
       Username: formdata.email,
       Pool: COGNITO_USER_POOL,
-      Storage: sessionStorage,
     });
 
     user.authenticateUser(details, {

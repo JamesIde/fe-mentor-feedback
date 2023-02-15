@@ -11,6 +11,13 @@ provider:
   httpApi:
     payload: "1.0"
     cors: true
+    authorizers:
+      cognitoAuthorizer:
+        type: jwt
+        identitySource: $request.header.Authorization
+        issuerUrl: ${env:COGNITO_ISSUER_URL}
+        audience:
+          - ${env:COGNITO_CLIENT_ID}
   environment:
     SUPABASE_KEY: ${env:SUPABASE_KEY}
     SUPABASE_URL: ${env:SUPABASE_URL}

@@ -4,7 +4,7 @@ export const getFeedback = async (
   event: APIGatewayProxyEvent
 ): Promise<APIGatewayProxyResult> => {
   const accessService = new AccessService();
-  return accessService.getFeedback();
+  return accessService.getFeedback(event);
 };
 
 export const addFeedback = async (

@@ -1,5 +1,9 @@
+import { CognitoUserSession } from "amazon-cognito-identity-js";
+import { useEffect, useState } from "react";
 import { HiLightBulb } from "react-icons/hi";
 import { Link } from "react-router-dom";
+import { getUserFromSession } from "../hooks/getUserHook";
+import { COGNITO_USER_POOL } from "../services/cognito.service";
 import Feedback from "./Feedback";
 import UserArea from "./UserArea";
 function Main() {
@@ -9,6 +13,8 @@ function Main() {
     ["In Progress", ["1", "purple"]],
     ["Live", ["3", "green"]],
   ]);
+
+  const user = getUserFromSession();
   return (
     <section>
       <main>
@@ -82,15 +88,19 @@ function Main() {
                       </p>
                     </div>
                   </div>
-                  <button className=" bg-purple-500 rounded-xl flex justify-center items-center m-4 hover:bg-purple-900">
-                    <Link to="/add-feedback">
-                      <div className="pl-4 pr-4 pt-3 pb-3">
-                        <p className="text-sm text-white font-bold">
-                          + Add Feedback
-                        </p>
-                      </div>
-                    </Link>
-                  </button>
+                  {user && (
+                    <>
+                      <button className=" bg-purple-500 rounded-xl flex justify-center items-center m-4 hover:bg-purple-900">
+                        <Link to="/add-feedback">
+                          <div className="pl-4 pr-4 pt-3 pb-3">
+                            <p className="text-sm text-white font-bold">
+                              + Add Feedback
+                            </p>
+                          </div>
+                        </Link>
+                      </button>
+                    </>
+                  )}
                 </div>
               </div>
             </nav>
