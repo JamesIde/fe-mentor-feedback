@@ -28,6 +28,8 @@ functions:
       - httpApi:
           path: /
           method: get
+          authorizer:
+            name: JWTAuthorizer
 
   addFeedback:
     handler: lambdas/feedback.addFeedback
@@ -35,6 +37,8 @@ functions:
       - httpApi:
           path: /
           method: post
+          authorizer:
+            name: JWTAuthorizer
 
   deleteFeedback:
     handler: lambdas/feedback.deleteFeedback
@@ -42,6 +46,8 @@ functions:
       - httpApi:
           path: /{id}
           method: delete
+          authorizer:
+            name: JWTAuthorizer
 
 plugins:
   - serverless-plugin-typescript
