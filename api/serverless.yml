@@ -29,7 +29,7 @@ functions:
           path: /
           method: get
           authorizer:
-            name: JWTAuthorizer
+            name: cognitoAuthorizer
 
   addFeedback:
     handler: lambdas/feedback.addFeedback
@@ -38,7 +38,7 @@ functions:
           path: /
           method: post
           authorizer:
-            name: JWTAuthorizer
+            name: cognitoAuthorizer
 
   deleteFeedback:
     handler: lambdas/feedback.deleteFeedback
@@ -47,7 +47,7 @@ functions:
           path: /{id}
           method: delete
           authorizer:
-            name: JWTAuthorizer
+            name: cognitoAuthorizer
 
 plugins:
   - serverless-plugin-typescript
