@@ -9,7 +9,7 @@ env:
   AWS_SECRET_ACCESS_KEY: "${{ secrets.AWS_SECRET_ACCESS_KEY }}"
   SUPABASE_KEY: "${{ secrets.SUPABASE_KEY }}"
   SUPABASE_URL: "${{ secrets.SUPABASE_URL }}"
-  COGNITO_ISSUR_URL: "${{ secrets.COGNITO_ISSUER_URL }}"
+  COGNITO_ISSUER_URL: "${{ secrets.COGNITO_ISSUER_URL }}"
   COGNITO_CLIENT_ID: "${{ secrets.COGNITO_CLIENT_ID }}"
 
 jobs:
