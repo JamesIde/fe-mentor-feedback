@@ -28,8 +28,6 @@ functions:
       - httpApi:
           path: /
           method: get
-          authorizer:
-            name: cognitoAuthorizer
 
   addFeedback:
     handler: lambdas/feedback.addFeedback
